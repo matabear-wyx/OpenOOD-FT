@@ -79,7 +79,7 @@ class BaseExperiment:
 
     def run(self):
         self.config.save_output = True
-        setup_logger(config)
+        setup_logger(self.config)
         self.config.evaluator.name = 'base'
         for epoch_idx in range(1, self.config.optimizer.num_epochs + 1):
             self.train_epoch(epoch_idx)
