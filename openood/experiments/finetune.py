@@ -43,7 +43,7 @@ class BaseExperiment:
         return trainer
 
     def init_evaluator(self):
-        config.evaluator.name = 'base'
+        self.config.evaluator.name = 'base'
         evaluator = get_evaluator(self.config)
         return evaluator
 
@@ -78,7 +78,7 @@ class BaseExperiment:
         self.recorder.report(train_metrics, val_metrics)
 
     def run(self):
-        config.save_output = True
+        self.config.save_output = True
         setup_logger(config)
         self.config.evaluator.name = 'base'
         for epoch_idx in range(1, self.config.optimizer.num_epochs + 1):
