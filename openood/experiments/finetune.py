@@ -24,14 +24,14 @@ class BaseExperiment:
         self.config = config
         self.net = self.init_net()
         self.optimizer = self.init_optimizer()
+        self.scheduler = self.init_scheduler()
         self.id_loader_dict = get_dataloader(config)
         self.ood_loader_dict = get_ood_dataloader(config)
-        self.trainer = self.init_trainer()
-        self.evaluator = self.init_evaluator()
         self.train_loader = self.id_loader_dict['train']
         self.test_loader = self.id_loader_dict['test']
         self.val_loader = self.id_loader_dict['val']
-        self.scheduler = self.init_scheduler()
+        self.trainer = self.init_trainer()
+        self.evaluator = self.init_evaluator()
         self.recorder = get_recorder(config)
 
     def init_net(self):
