@@ -28,6 +28,7 @@ class BaseExperiment:
         self.recorder = get_recorder(config)
         self.results = None
         self.postprocess_results = None
+        self.save_root = f'./results/{self.config.exp_name}'
 
     def init_net(self):
         net = get_network(self.config.network).cuda()
