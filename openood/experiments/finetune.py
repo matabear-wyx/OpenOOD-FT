@@ -24,7 +24,6 @@ class BaseExperiment:
         self.config = config
         self.net = self.init_net()
         self.optimizer = self.init_optimizer()
-        self.scheduler = self.init_scheduler()
         self.id_loader_dict = get_dataloader(config)
         self.ood_loader_dict = get_ood_dataloader(config)
         self.train_loader = self.id_loader_dict['train']
@@ -32,6 +31,7 @@ class BaseExperiment:
         self.val_loader = self.id_loader_dict['val']
         self.trainer = self.init_trainer()
         self.evaluator = self.init_evaluator()
+        self.scheduler = self.init_scheduler()
         self.recorder = get_recorder(config)
 
     def init_net(self):
@@ -43,6 +43,7 @@ class BaseExperiment:
         return trainer
 
     def init_evaluator(self):
+        config.evaluator.name = 'base'
         evaluator = get_evaluator(self.config)
         return evaluator
 
@@ -77,6 +78,7 @@ class BaseExperiment:
         self.recorder.report(train_metrics, val_metrics)
 
     def run(self):
+        config.save_output = True
         setup_logger(config)
         self.config.evaluator.name = 'base'
         for epoch_idx in range(1, self.config.optimizer.num_epochs + 1):
