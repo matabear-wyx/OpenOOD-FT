@@ -240,7 +240,7 @@ class BaseExperiment:
 
             print_all_metrics(metrics_mean)
 
-    def evalute(self):
+    def evaluate(self):
         self.id_result()
         self.ood_result()
         self.load_result()
