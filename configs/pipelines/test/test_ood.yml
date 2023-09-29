@@ -2,7 +2,7 @@ exp_name: "'@{dataset.name}'_'@{network.name}'_'@{pipeline.name}'_'@{evaluator.n
 output_dir: ./results/
 save_output: True
 merge_option: default # disabled if 'save_output' is False
-mark: default # to mark the version of experiment
+mark: default # to mark the version of experiments
 seed: 0
 
 num_gpus: 1

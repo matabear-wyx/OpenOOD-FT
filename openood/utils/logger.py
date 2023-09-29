@@ -30,7 +30,7 @@ class Logger:
     Examples:
        >>> import sys
        >>> import os.path as osp
-       >>> save_dir = 'output/experiment-1'
+       >>> save_dir = 'output/experiments-1'
        >>> log_name = 'train.log'
        >>> sys.stdout = Logger(osp.join(save_dir, log_name))
     """
@@ -71,7 +71,7 @@ def setup_logger(config):
     """generate exp directory to save configs, logger, checkpoints, etc.
 
     Args:
-        config: all configs of the experiment
+        config: all configs of the experiments
     """
     print('------------------ Config --------------------------', flush=True)
     print(config, flush=True)
